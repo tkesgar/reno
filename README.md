@@ -1,2 +1,3 @@
-# saratoga
-Library/framework to help with Node.js server development
+# @tkesgar/reno
+
+Environment variables utility

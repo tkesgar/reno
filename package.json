@@ -1,11 +1,10 @@
 {
-  "name": "@tkesgar/saratoga",
+  "name": "@tkesgar/reno",
   "version": "0.0.0",
   "description": "Library to help with Node.js server development",
   "keywords": [
-    "express",
-    "server",
-    "utilities"
+    "env",
+    "utility"
   ],
   "license": "MIT",
   "author": "Ted Kesgar <t.kesgar@live.com> (https://tkesgar.com)",
@@ -14,12 +13,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tkesgar/saratoga.git"
+    "url": "git+https://github.com/tkesgar/reno.git"
   },
   "bugs": {
-    "url": "https://github.com/tkesgar/saratoga/issues"
+    "url": "https://github.com/tkesgar/reno/issues"
   },
-  "homepage": "https://github.com/tkesgar/saratoga#readme",
+  "homepage": "https://github.com/tkesgar/reno#readme",
   "engines": {
     "node": ">=12"
   },
@@ -49,12 +48,14 @@
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-jest": "^23.7.0",
     "eslint-plugin-prettier": "^3.1.2",
-    "express": "^4.17.1",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
     "lint-staged": "^10.0.7",
     "prettier": "~2.0.2",
     "ts-jest": "^25.2.0",
     "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0"
   }
 }
