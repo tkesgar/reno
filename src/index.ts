@@ -57,3 +57,15 @@ export function getEnvValue<T = string>(key: string, defaultValue?: T): T {
 
   return value as T;
 }
+
+export function getPrefixEnvs(prefix: string): { [key: string]: unknown } {
+  const env: { [key: string]: unknown } = {};
+
+  for (const [key, value] of Object.entries(process.env)) {
+    if (key.startsWith(prefix)) {
+      env[key] = value;
+    }
+  }
+
+  return env;
+}

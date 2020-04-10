@@ -1,5 +1,12 @@
 import path from "path";
-import { loadEnv, getEnv, isDevelopment, isProduction, getEnvValue } from ".";
+import {
+  loadEnv,
+  getEnv,
+  isDevelopment,
+  isProduction,
+  getEnvValue,
+  getPrefixEnvs,
+} from ".";
 
 beforeEach(() => {
   Object.keys(process.env)
@@ -136,5 +143,23 @@ describe("getEnvValue", () => {
     expect(() => getEnvValue<object>("TEST_FOO")).toThrowError(
       "Environment variable 'TEST_FOO' is not a valid value"
     );
+  });
+});
+
+describe("getPrefixEnvs", () => {
+  it("should return map of environment variables that starts with prefix", () => {
+    process.env.TEST_PREFIX_FOO = "foo";
+    process.env.TEST_PREFIX_BAR = "bar";
+    process.env.TEST_PREFIX_BAZ = "baz";
+
+    expect(getPrefixEnvs("TEST_PREFIX_")).toEqual({
+      TEST_PREFIX_FOO: "foo",
+      TEST_PREFIX_BAR: "bar",
+      TEST_PREFIX_BAZ: "baz",
+    });
+  });
+
+  it("should return empty map if there are no environment variables that starts with prefix", () => {
+    expect(getPrefixEnvs("TEST_PREFIX_")).toEqual({});
   });
 });
