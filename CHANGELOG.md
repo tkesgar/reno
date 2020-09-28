@@ -1,3 +1,14 @@
+# [1.0.0](https://github.com/tkesgar/reno/compare/v0.2.1...v1.0.0) (2020-09-28)
+
+### Features
+
+- remove getEnvValue and getPrefixEnvs
+  ([77b660c](https://github.com/tkesgar/reno/commit/77b660c5ac6cbf179fa06c55e0a8fdb9a6bf57c4))
+
+### BREAKING CHANGES
+
+- getEnvValue and getPrefixEnvs will not be available anymore
+
 <a name="0.2.1"></a>
 
 ## [0.2.1](https://github.com/tkesgar/reno/compare/v0.2.0...v0.2.1) (2020-04-10)

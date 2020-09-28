@@ -1,6 +1,6 @@
 {
   "name": "@tkesgar/reno",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "Library to help with Node.js server development",
   "keywords": [
     "env",
