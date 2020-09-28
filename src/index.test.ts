@@ -1,12 +1,5 @@
 import path from "path";
-import {
-  loadEnv,
-  getEnv,
-  isDevelopment,
-  isProduction,
-  getEnvValue,
-  getPrefixEnvs,
-} from ".";
+import { loadEnv, getEnv, isDevelopment, isProduction } from ".";
 
 beforeEach(() => {
   Object.keys(process.env)
@@ -111,55 +104,5 @@ describe("isProduction", () => {
     process.env.NODE_ENV = "production";
 
     expect(isProduction()).toBe(true);
-  });
-});
-
-describe("getEnvValue", () => {
-  it("should return value from env variable parsed as JSON", () => {
-    process.env.TEST_FOO = '{"foo": "bar"}';
-
-    expect(getEnvValue<object>("TEST_FOO")).toEqual({ foo: "bar" });
-  });
-
-  it("should return default value if env variable does not exist and default value is provided", () => {
-    expect(
-      getEnvValue<object>("TEST_FOO", { foo: "bar" })
-    ).toEqual({ foo: "bar" });
-  });
-
-  it("should accept falsy as default value", () => {
-    expect(getEnvValue<object>("TEST_FOO", null)).toEqual(null);
-  });
-
-  it("should throw error if env variable does not exist and default value is not provided", () => {
-    expect(() => getEnvValue<object>("TEST_FOO")).toThrowError(
-      "Environment variable 'TEST_FOO' is not provided"
-    );
-  });
-
-  it("should throw error if env variable is not a valid JSON", () => {
-    process.env.TEST_FOO = '{foo: "bar"}';
-
-    expect(() => getEnvValue<object>("TEST_FOO")).toThrowError(
-      "Environment variable 'TEST_FOO' is not a valid value"
-    );
-  });
-});
-
-describe("getPrefixEnvs", () => {
-  it("should return map of environment variables that starts with prefix", () => {
-    process.env.TEST_PREFIX_FOO = "foo";
-    process.env.TEST_PREFIX_BAR = "bar";
-    process.env.TEST_PREFIX_BAZ = "baz";
-
-    expect(getPrefixEnvs("TEST_PREFIX_")).toEqual({
-      TEST_PREFIX_FOO: "foo",
-      TEST_PREFIX_BAR: "bar",
-      TEST_PREFIX_BAZ: "baz",
-    });
-  });
-
-  it("should return empty map if there are no environment variables that starts with prefix", () => {
-    expect(getPrefixEnvs("TEST_PREFIX_")).toEqual({});
   });
 });

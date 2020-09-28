@@ -37,35 +37,3 @@ export function isDevelopment(): boolean {
 export function isProduction(): boolean {
   return getEnv() === "production";
 }
-
-export function getEnvValue<T = string>(key: string, defaultValue?: T): T {
-  const envValue = process.env[key];
-  if (!envValue) {
-    if (typeof defaultValue !== "undefined") {
-      return defaultValue;
-    }
-
-    throw new Error(`Environment variable '${key}' is not provided`);
-  }
-
-  let value;
-  try {
-    value = JSON.parse(envValue);
-  } catch {
-    throw new Error(`Environment variable '${key}' is not a valid value`);
-  }
-
-  return value as T;
-}
-
-export function getPrefixEnvs(prefix: string): { [key: string]: unknown } {
-  const env: { [key: string]: unknown } = {};
-
-  for (const [key, value] of Object.entries(process.env)) {
-    if (key.startsWith(prefix)) {
-      env[key] = value;
-    }
-  }
-
-  return env;
-}
